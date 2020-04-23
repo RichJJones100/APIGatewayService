@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: greeting-service
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/greeting/**
+        - id: prediction-service
+          uri: http://localhost:8082/
+          predicates:
+            - Path=/prediction/**
